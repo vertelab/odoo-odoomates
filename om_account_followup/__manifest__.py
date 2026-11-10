@@ -26,6 +26,13 @@
     ],
     'demo': ['demo/demo.xml'],
     'images': ['static/description/banner.png'],
-    'installable': True,
+    # Inte portad till Odoo 18 (repot står på gren 14.0). Versionen
+    # '14.0.1.0.0' är ogiltig för Odoo 18 och adapt_version() kastar
+    # ValueError -> "Module om_account_followup: invalid manifest" ->
+    # HTTP 500 på ALLA /web/static/*. Med installable: False sväljer
+    # Odoo felet (modules/module.py load_manifest).
+    # Skriv INTE om versionsnumret — det döljer att modulen inte är portad.
+    # Se /srv/salt/README.md ("Bara TVÅ fällde registryt") och T/12318.
+    'installable': False,
     'auto_install': False,
 }
